@@ -2,6 +2,7 @@
   "name": "thenookclub",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.thecarve.club",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -10,15 +11,17 @@
     "@types/node": "^13.11.0",
     "@types/react": "^16.9.31",
     "@types/react-dom": "^16.9.6",
+    "gh-pages": "^2.2.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "^3.8.3"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
