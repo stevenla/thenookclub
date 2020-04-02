@@ -7,13 +7,17 @@ import styles from "./App.module.css";
 import fishes from "./data/fish.json";
 import bugs from "./data/bug.json";
 
-const CRITTERS: Critter[] = [...fishes, ...bugs].sort((a, b) => {
+const CRITTERS_BY_NAME: Critter[] = [...fishes, ...bugs].sort((a, b) => {
   if (a.name < b.name) {
     return -1;
   } else if (a.name > b.name) {
     return 1;
   }
   return 0;
+});
+
+const CRITTERS_BY_PRICE: Critter[] = [...fishes, ...bugs].sort((a, b) => {
+  return b.price - a.price;
 });
 
 const MONTH_NUMBER_TO_STR = [
@@ -51,59 +55,61 @@ export default function Index() {
     TYPE_FILTERS
   );
 
+  const [sort, sortEl] = useRadioGroup("sort", "Name", ["Name", "Price"]);
+
   const [query, setQuery] = useState<string>("");
 
-  const filteredCritters = React.useMemo(
-    () =>
-      CRITTERS.filter(critter => {
-        const now = new Date();
-        const thisMonth = now.getMonth();
-        const nextMonth = (thisMonth + 1) % 12;
-        const prevMonth = (thisMonth - 1 + 12) % 12;
+  const filteredCritters = React.useMemo(() => {
+    const crittersToUse =
+      sort === "Price" ? CRITTERS_BY_PRICE : CRITTERS_BY_NAME;
+    return crittersToUse.filter(critter => {
+      const now = new Date();
+      const thisMonth = now.getMonth();
+      const nextMonth = (thisMonth + 1) % 12;
+      const prevMonth = (thisMonth - 1 + 12) % 12;
 
-        if (
-          monthFilter === "Current" &&
-          !isActiveInMonths(critter, [thisMonth])
-        ) {
-          return false;
-        }
+      if (
+        monthFilter === "Current" &&
+        !isActiveInMonths(critter, [thisMonth])
+      ) {
+        return false;
+      }
 
-        if (
-          monthFilter === "Expiring" &&
-          !(
-            isActiveInMonths(critter, [thisMonth]) &&
-            !isActiveInMonths(critter, [nextMonth])
-          )
-        ) {
-          return false;
-        }
+      if (
+        monthFilter === "Expiring" &&
+        !(
+          isActiveInMonths(critter, [thisMonth]) &&
+          !isActiveInMonths(critter, [nextMonth])
+        )
+      ) {
+        return false;
+      }
 
-        if (
-          monthFilter === "New" &&
-          !(
-            isActiveInMonths(critter, [thisMonth]) &&
-            !isActiveInMonths(critter, [prevMonth])
-          )
-        ) {
-          return false;
-        }
+      if (
+        monthFilter === "New" &&
+        !(
+          isActiveInMonths(critter, [thisMonth]) &&
+          !isActiveInMonths(critter, [prevMonth])
+        )
+      ) {
+        return false;
+      }
 
-        if (typeFilter === "Bugs" && critter.type !== "bug") {
-          return false;
-        }
-        if (typeFilter === "Fish" && critter.type !== "fish") {
-          return false;
-        }
+      if (typeFilter === "Bugs" && critter.type !== "bug") {
+        return false;
+      }
+      if (typeFilter === "Fish" && critter.type !== "fish") {
+        return false;
+      }
 
-        if (query !== "") {
-          const regex = new RegExp(query, "gi");
-          return !!critter.name.match(regex);
-        }
+      if (query !== "") {
+        const regex = new RegExp(query, "gi");
+        return !!critter.name.match(regex);
+      }
 
-        return true;
-      }),
-    [monthFilter, typeFilter, query]
-  );
+      return true;
+    });
+  }, [monthFilter, typeFilter, query, sort]);
 
   return (
     <div>
@@ -124,6 +130,10 @@ export default function Index() {
         <div className={styles.filterRow}>
           <span>Month</span>
           {monthFilterEl}
+        </div>
+        <div className={styles.filterRow}>
+          <span>Sort</span>
+          {sortEl}
         </div>
       </div>
       <div className={styles.critters}>
