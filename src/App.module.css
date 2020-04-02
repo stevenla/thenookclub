@@ -1,0 +1,37 @@
+.critters {
+  margin: 16px 16px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.filters {
+  margin-top: 12px;
+}
+
+.filterRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.filterRow > span {
+  margin-right: 8px;
+  width: 52px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  text-align: right;
+}
+
+.filterRow > input {
+  border: 2px solid black;
+  flex-grow: 1;
+  padding: 8px;
+  margin-right: 16px;
+  border-radius: 100px;
+  font-size: 16px;
+  -webkit-appearance: none;
+}
+.filterRow > input:focus {
+  outline: 0;
+}

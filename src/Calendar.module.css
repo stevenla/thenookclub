@@ -1,0 +1,21 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.row div {
+  text-transform: uppercase;
+  font-size: 0.5em;
+  opacity: 0.25;
+  margin-right: auto;
+}
+.row div:last-of-type {
+  margin-right: 0;
+}
+.row div.active {
+  opacity: 1;
+}

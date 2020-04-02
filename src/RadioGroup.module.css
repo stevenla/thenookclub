@@ -1,0 +1,18 @@
+.radioGroup {
+  border: 2px solid black;
+  display: inline-flex;
+  border-radius: 100px;
+  flex-grow: 0;
+}
+.radioGroup input {
+  display: none;
+}
+.radioGroup label {
+  padding: 6px 8px;
+  margin: 2px;
+  border-radius: 100px;
+}
+.radioGroup label.active {
+  color: white;
+  background-color: black;
+}
