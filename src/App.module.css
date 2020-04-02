@@ -15,11 +15,11 @@
   margin-bottom: 4px;
 }
 .filterRow > span {
-  margin-right: 8px;
+  margin-right: 14px;
   width: 52px;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 0.7em;
+  font-size: 0.6em;
   text-align: right;
 }
 
