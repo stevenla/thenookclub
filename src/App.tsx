@@ -93,7 +93,7 @@ export default function Index() {
   }, [monthFilter, typeFilter, query, sort, hemisphere]);
 
   return (
-    <div>
+    <div className={styles.root}>
       <div className={styles.filters}>
         <div className={styles.filterRow}>
           <span>Name</span>
@@ -124,7 +124,11 @@ export default function Index() {
       <HemisphereContextProvider value={hemisphere}>
         <div className={styles.critters}>
           {filteredCritters.map(critter => {
-            return <CritterRow key={critter.name} critter={critter} />;
+            return (
+              <div className={styles.critter}>
+                <CritterRow key={critter.name} critter={critter} />
+              </div>
+            );
           })}
         </div>
       </HemisphereContextProvider>
