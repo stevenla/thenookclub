@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Critter } from "./types";
 import CritterRow from "./CritterRow";
+import { MONTHS } from "./Calendar";
 import { useRadioGroup } from "./RadioGroup";
 import styles from "./App.module.css";
+import { HemisphereContextProvider } from "./HemisphereContext";
 
 import fishes from "./data/fish.json";
 import bugs from "./data/bug.json";
@@ -20,42 +22,20 @@ const CRITTERS_BY_PRICE: Critter[] = [...fishes, ...bugs].sort((a, b) => {
   return b.price - a.price;
 });
 
-const MONTH_NUMBER_TO_STR = [
-  "jan",
-  "feb",
-  "mar",
-  "apr",
-  "may",
-  "jun",
-  "jul",
-  "aug",
-  "sep",
-  "oct",
-  "nov",
-  "dec"
-];
-
 function isActiveInMonths(critter: Critter, months: number[]): boolean {
-  return months.some(month => critter[MONTH_NUMBER_TO_STR[month]]);
+  return months.some(month => critter[MONTHS[month]]);
 }
 
 const MONTH_FILTERS = ["Any", "Current", "Expiring", "New"];
 const TYPE_FILTERS = ["Any", "Fish", "Bugs"];
+const HEMISPHERE_FILTERS = ["North", "South"];
+const SORT_OPTIONS = ["Name", "Price"];
 
 export default function Index() {
-  const [monthFilter, monthFilterEl] = useRadioGroup(
-    "monthFilter",
-    "Any",
-    MONTH_FILTERS
-  );
-
-  const [typeFilter, typeFilterEl] = useRadioGroup(
-    "typeFilter",
-    "Any",
-    TYPE_FILTERS
-  );
-
-  const [sort, sortEl] = useRadioGroup("sort", "Name", ["Name", "Price"]);
+  const [monthFilter, monthFilterEl] = useRadioGroup(MONTH_FILTERS);
+  const [typeFilter, typeFilterEl] = useRadioGroup(TYPE_FILTERS);
+  const [hemisphere, hemisphereEl] = useRadioGroup(HEMISPHERE_FILTERS);
+  const [sort, sortEl] = useRadioGroup(SORT_OPTIONS);
 
   const [query, setQuery] = useState<string>("");
 
@@ -64,7 +44,8 @@ export default function Index() {
       sort === "Price" ? CRITTERS_BY_PRICE : CRITTERS_BY_NAME;
     return crittersToUse.filter(critter => {
       const now = new Date();
-      const thisMonth = now.getMonth();
+      const hemisphereOffset = hemisphere === "North" ? 0 : 6;
+      const thisMonth = now.getMonth() + hemisphereOffset;
       const nextMonth = (thisMonth + 1) % 12;
       const prevMonth = (thisMonth - 1 + 12) % 12;
 
@@ -109,7 +90,7 @@ export default function Index() {
 
       return true;
     });
-  }, [monthFilter, typeFilter, query, sort]);
+  }, [monthFilter, typeFilter, query, sort, hemisphere]);
 
   return (
     <div>
@@ -132,15 +113,21 @@ export default function Index() {
           {monthFilterEl}
         </div>
         <div className={styles.filterRow}>
+          <span>Hemi</span>
+          {hemisphereEl}
+        </div>
+        <div className={styles.filterRow}>
           <span>Sort</span>
           {sortEl}
         </div>
       </div>
-      <div className={styles.critters}>
-        {filteredCritters.map(critter => {
-          return <CritterRow key={critter.name} critter={critter} />;
-        })}
-      </div>
+      <HemisphereContextProvider value={hemisphere}>
+        <div className={styles.critters}>
+          {filteredCritters.map(critter => {
+            return <CritterRow key={critter.name} critter={critter} />;
+          })}
+        </div>
+      </HemisphereContextProvider>
     </div>
   );
 }

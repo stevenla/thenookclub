@@ -16,7 +16,7 @@ export default function CritterRow({ critter }: CritterRowProps) {
   return (
     <div className={styles.root}>
       <div className={styles.left}>
-        <img src={getImageUrl(critter.name)} />
+        <img src={getImageUrl(critter.name)} alt={critter.name} />
       </div>
       <div className={styles.right}>
         <div className={styles.row}>

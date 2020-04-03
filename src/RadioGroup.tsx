@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import styles from "./RadioGroup.module.css";
 
-export function useRadioGroup(
-  name: string,
-  defaultValue: string,
-  options: string[]
-) {
-  // TODO: power this with URL
-  const [value, setValue] = useState<string>(defaultValue);
+let counter = 0;
+
+export function useRadioGroup(options: string[]): [string, JSX.Element] {
+  const [id] = useState(() => counter++);
+  const [value, setValue] = useState<string>(options[0]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: any = e.target.value;
@@ -22,7 +20,7 @@ export function useRadioGroup(
           <label key={option} className={active && styles.active}>
             <input
               type="radio"
-              name={name}
+              name={id.toString()}
               value={option}
               checked={active}
               onChange={handleChange}
