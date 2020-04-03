@@ -28,7 +28,7 @@
 .price {
   margin-left: auto;
   flex-grow: 0;
-  color: #58c322;
+  color: var(--green);
   text-align: right;
 }
 .location {

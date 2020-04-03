@@ -125,8 +125,8 @@ export default function Index() {
         <div className={styles.critters}>
           {filteredCritters.map(critter => {
             return (
-              <div className={styles.critter}>
-                <CritterRow key={critter.name} critter={critter} />
+              <div key={critter.name} className={styles.critter}>
+                <CritterRow critter={critter} />
               </div>
             );
           })}

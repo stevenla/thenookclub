@@ -35,13 +35,20 @@
 }
 
 .filterRow > input {
-  border: 2px solid black;
+  border: 2px solid var(--dark);
+  color: var(--dark);
   flex-grow: 1;
   padding: 8px;
   margin-right: 16px;
   border-radius: 100px;
   font-size: 16px;
   -webkit-appearance: none;
+  background-color: transparent;
+}
+
+.filterRow > input::placeholder {
+  color: var(--dark);
+  opacity: 0.5;
 }
 
 .filterRow > input:focus {

@@ -37,7 +37,7 @@ export default function Calendar({ critter }: CalendarProps) {
       <div className={styles.row}>
         {months.map((month, i) => {
           return (
-            <div className={critter[month] && styles.active}>
+            <div key={month} className={critter[month] ? styles.active : ""}>
               {capitalize(MONTHS[i])}
             </div>
           );

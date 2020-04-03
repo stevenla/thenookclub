@@ -1,5 +1,5 @@
 .radioGroup {
-  border: 2px solid black;
+  border: 2px solid var(--dark);
   display: inline-flex;
   border-radius: 100px;
   flex-grow: 0;
@@ -13,7 +13,8 @@
   margin: 2px;
   padding: 6px 8px;
 }
+
 .radioGroup label.active {
-  color: white;
-  background-color: black;
+  color: var(--light);
+  background-color: var(--dark);
 }

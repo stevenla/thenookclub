@@ -17,7 +17,7 @@ export function useRadioGroup(options: string[]): [string, JSX.Element] {
       {options.map(option => {
         const active = value === option;
         return (
-          <label key={option} className={active && styles.active}>
+          <label key={option} className={active ? styles.active : ""}>
             <input
               type="radio"
               name={id.toString()}
