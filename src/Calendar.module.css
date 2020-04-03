@@ -10,6 +10,7 @@
 .row div {
   text-transform: uppercase;
   font-size: 0.5em;
+  font-weight: 500;
   opacity: 0.25;
   margin-right: auto;
 }
