@@ -37,10 +37,10 @@
 }
 .location {
   font-size: 0.8em;
+  flex-grow: 1;
 }
 .time {
   font-size: 0.8em;
-  margin-left: auto;
   flex-grow: 0;
   text-align: right;
 }
