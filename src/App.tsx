@@ -23,7 +23,7 @@ const CRITTERS_BY_PRICE: Critter[] = [...fishes, ...bugs].sort((a, b) => {
 });
 
 function isActiveInMonths(critter: Critter, months: number[]): boolean {
-  return months.some(month => critter[MONTHS[month]]);
+  return months.some((month) => critter[MONTHS[month]]);
 }
 
 const MONTH_FILTERS = ["Any", "Current", "Expiring", "New"];
@@ -32,17 +32,17 @@ const HEMISPHERE_FILTERS = ["North", "South"];
 const SORT_OPTIONS = ["Name", "Price"];
 
 export default function Index() {
-  const [monthFilter, monthFilterEl] = useRadioGroup(MONTH_FILTERS);
-  const [typeFilter, typeFilterEl] = useRadioGroup(TYPE_FILTERS);
-  const [hemisphere, hemisphereEl] = useRadioGroup(HEMISPHERE_FILTERS);
-  const [sort, sortEl] = useRadioGroup(SORT_OPTIONS);
+  const [monthFilter, monthFilterEl] = useRadioGroup("month", MONTH_FILTERS);
+  const [typeFilter, typeFilterEl] = useRadioGroup("type", TYPE_FILTERS);
+  const [hemisphere, hemisphereEl] = useRadioGroup("hemi", HEMISPHERE_FILTERS);
+  const [sort, sortEl] = useRadioGroup("sort", SORT_OPTIONS);
 
   const [query, setQuery] = useState<string>("");
 
   const filteredCritters = React.useMemo(() => {
     const crittersToUse =
       sort === "Price" ? CRITTERS_BY_PRICE : CRITTERS_BY_NAME;
-    return crittersToUse.filter(critter => {
+    return crittersToUse.filter((critter) => {
       const now = new Date();
       const hemisphereOffset = hemisphere === "North" ? 0 : 6;
       const thisMonth = now.getMonth() + hemisphereOffset;
@@ -100,7 +100,7 @@ export default function Index() {
           <input
             type="search"
             value={query}
-            onChange={e => setQuery(e.target.value)}
+            onChange={(e) => setQuery(e.target.value)}
             placeholder="search..."
           />
         </div>
@@ -123,7 +123,7 @@ export default function Index() {
       </div>
       <HemisphereContextProvider value={hemisphere}>
         <div className={styles.critters}>
-          {filteredCritters.map(critter => {
+          {filteredCritters.map((critter) => {
             return (
               <div key={critter.name} className={styles.critter}>
                 <CritterRow critter={critter} />

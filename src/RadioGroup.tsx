@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import styles from "./RadioGroup.module.css";
+import useHashState from "./url-state/useHashState";
 
 let counter = 0;
 
-export function useRadioGroup(options: string[]): [string, JSX.Element] {
+export function useRadioGroup(
+  name: string,
+  options: string[]
+): [string, JSX.Element] {
   const [id] = useState(() => counter++);
-  const [value, setValue] = useState<string>(options[0]);
+  const [value, setValue] = useHashState(name, options[0]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: any = e.target.value;
@@ -14,7 +18,7 @@ export function useRadioGroup(options: string[]): [string, JSX.Element] {
 
   const element = (
     <div className={styles.radioGroup}>
-      {options.map(option => {
+      {options.map((option) => {
         const active = value === option;
         return (
           <label key={option} className={active ? styles.active : ""}>
