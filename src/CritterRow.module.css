@@ -29,7 +29,11 @@
   margin-left: auto;
   flex-grow: 0;
   color: var(--green);
-  text-align: right;
+  display: flex;
+  align-items: center;
+}
+.priceNumber {
+  margin-right: 4px;
 }
 .location {
   font-size: 0.8em;
