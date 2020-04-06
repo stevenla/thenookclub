@@ -1,4 +1,5 @@
 import React from "react";
+import useColor from "./useColor";
 
 interface BellsIcon {
   color: string;
@@ -6,12 +7,7 @@ interface BellsIcon {
 }
 
 export default function BellsIcon({ color, size }: BellsIcon) {
-  let colorToUse = color;
-  if (color.includes("--")) {
-    // Use CSS variables
-    const docEl = document.documentElement;
-    colorToUse = getComputedStyle(docEl).getPropertyValue(color);
-  }
+  const colorToUse = useColor(color);
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@ import React from "react";
 import { Critter } from "./types";
 import Calendar from "./Calendar";
 import styles from "./CritterRow.module.css";
-import BellsIcon from "./BellsIcon";
+import BellsIcon from "./icons/BellsIcon";
 
 function getImageUrl(name: string): string {
   const formattedName = name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
