@@ -24,7 +24,8 @@ export default function CritterRow({ critter }: CritterRowProps) {
   const storeName = getStoreName(critter.name);
   const [checked, setChecked] = useStoredState<boolean>(storeName, false);
   return (
-    <label className={styles.root}>
+    // Add the onTouchStart so the active css class would work
+    <label className={styles.root} onTouchStart={() => {}}>
       <div className={styles.left}>
         <img src={getImageUrl(critter.name)} alt={critter.name} />
       </div>
