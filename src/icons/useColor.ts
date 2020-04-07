@@ -1,9 +1,15 @@
-// import u
-
 import { useEffect, useState } from "react";
 
-const mql = window.matchMedia("(prefers-color-scheme: dark)");
+const mql: null | MediaQueryList =
+  typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-color-scheme: dark)")
+    : null;
 
+/**
+ * If the passed-in color is a CSS variable, get the hex value of that and
+ * listen for theme changes
+ * @param color hex color "#FFFFFF" or css variable "--dark"
+ */
 export default function useColor(color: string): string {
   let colorToUse = color;
   const [counter, setCounter] = useState<number>(0);
@@ -11,9 +17,13 @@ export default function useColor(color: string): string {
     function listener() {
       setCounter((s) => s + 1);
     }
-    mql.addListener(listener);
+    if (mql != null) {
+      mql.addListener(listener);
+    }
     return () => {
-      mql.removeListener(listener);
+      if (mql != null) {
+        mql.removeListener(listener);
+      }
     };
   });
 
