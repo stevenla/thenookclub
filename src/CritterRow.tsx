@@ -3,6 +3,7 @@ import { Critter } from "./types";
 import Calendar from "./Calendar";
 import styles from "./CritterRow.module.css";
 import BellsIcon from "./icons/BellsIcon";
+import CheckIcon from "./icons/CheckIcon";
 import useStoredState from "./useStoredState";
 
 function getImageUrl(name: string): string {
@@ -37,7 +38,13 @@ export default function CritterRow({ critter }: CritterRowProps) {
               checked={checked}
               onChange={() => setChecked(!checked)}
             />
-            <div className={styles.checkboxStyle}></div>
+            <div className={styles.checkboxStyle}>
+              {checked && (
+                <div className={styles.checkboxIcon}>
+                  <CheckIcon color="--light" size={12} />
+                </div>
+              )}
+            </div>
           </div>
           <div className={styles.price}>
             <span className={styles.priceNumber}>
