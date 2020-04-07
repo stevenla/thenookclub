@@ -10,7 +10,7 @@ const mql: null | MediaQueryList =
  * listen for theme changes
  * @param color hex color "#FFFFFF" or css variable "--foreground"
  */
-export default function useColor(color: string): string {
+export default function useColor(color?: string): string {
   let colorToUse = color;
   const [counter, setCounter] = useState<number>(0);
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function useColor(color: string): string {
     };
   });
 
-  if (color.includes("--")) {
+  if (color && color.includes("--")) {
     // Use CSS variables
     const docEl = document.documentElement;
     colorToUse = getComputedStyle(docEl).getPropertyValue(color);

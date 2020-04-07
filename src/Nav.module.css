@@ -6,8 +6,40 @@
   background-color: var(--background);
   z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .navSpacer {
   height: 48px;
+}
+
+.link.linkActive {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.link.linkActive svg {
+  fill: var(--accent);
+}
+
+.link {
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  width: 64px;
+  height: 48px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0.5;
+  color: var(--foreground);
+  font-size: 0.5em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.link svg {
+  fill: var(--foreground);
 }

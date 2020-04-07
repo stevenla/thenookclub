@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PositionProperty } from "csstype";
 import CrittersIcon from "./icons/CrittersIcon";
+import FossilIcon from "./icons/FossilIcon";
+import { NavLink } from "react-router-dom";
 
 import styles from "./Nav.module.css";
 
@@ -14,7 +16,7 @@ function useStickyish(
 ): [number, PositionProperty] {
   const lastScrollY = useRef<number>(0);
   const [top, setTop] = useState<number>(0);
-  const [position, setPosition] = useState<PositionProperty>("absolute");
+  const [position, setPosition] = useState<PositionProperty>("fixed");
   useEffect(() => {
     function listener() {
       const navHeight = ref?.current?.scrollHeight || 0;
@@ -53,7 +55,22 @@ export default function Nav() {
   return (
     <>
       <nav ref={ref} className={styles.nav} style={{ position, top }}>
-        <CrittersIcon size={32} color="--accent" />
+        <NavLink
+          activeClassName={styles.linkActive}
+          className={styles.link}
+          to="/"
+        >
+          <CrittersIcon size={24} />
+          <span>Critters</span>
+        </NavLink>
+        <NavLink
+          activeClassName={styles.linkActive}
+          className={styles.link}
+          to="/fossils"
+        >
+          <FossilIcon size={24} />
+          <span>Fossils</span>
+        </NavLink>
       </nav>
       <div className={styles.navSpacer} />
     </>

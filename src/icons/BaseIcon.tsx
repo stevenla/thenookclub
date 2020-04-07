@@ -2,7 +2,7 @@ import React from "react";
 import useColor from "./useColor";
 
 export interface IconProps {
-  color: string;
+  color?: string;
   size: number;
 }
 
