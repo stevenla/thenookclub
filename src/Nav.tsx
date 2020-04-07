@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { PositionProperty } from "csstype";
-import CrittersIcon from "./icons/CrittersIcon";
-import FossilIcon from "./icons/FossilIcon";
 import { NavLink } from "react-router-dom";
-import { ROUTES } from "./App";
+
+import ROUTES from "./Routes";
 
 import styles from "./Nav.module.css";
 
