@@ -42,7 +42,7 @@ export default function CritterRow({ critter }: CritterRowProps) {
             <div className={styles.checkboxStyle}>
               {checked && (
                 <div className={styles.checkboxIcon}>
-                  <CheckIcon color="--light" size={12} />
+                  <CheckIcon color="--background" size={12} />
                 </div>
               )}
             </div>
@@ -51,7 +51,7 @@ export default function CritterRow({ critter }: CritterRowProps) {
             <span className={styles.priceNumber}>
               {critter.price.toLocaleString()}
             </span>
-            <BellsIcon color="--green" size={16} />
+            <BellsIcon color="--money" size={16} />
           </div>
         </div>
         <div className={styles.row}>

@@ -8,7 +8,7 @@ const mql: null | MediaQueryList =
 /**
  * If the passed-in color is a CSS variable, get the hex value of that and
  * listen for theme changes
- * @param color hex color "#FFFFFF" or css variable "--dark"
+ * @param color hex color "#FFFFFF" or css variable "--foreground"
  */
 export default function useColor(color: string): string {
   let colorToUse = color;
