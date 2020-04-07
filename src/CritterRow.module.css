@@ -1,7 +1,7 @@
 .root {
   display: flex;
   flex-direction: row;
-  padding: 0 0 24px;
+  margin: 0 0 24px;
 }
 
 .left {
@@ -46,6 +46,34 @@
 }
 
 .checkbox {
-  display: flex;
-  flex-grow: 0;
+  position: fixed;
+  left: -100000px;
+}
+
+.checkboxStyle {
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  margin-left: 6px;
+  border: 1px solid var(--dark);
+  background: none;
+  border-radius: 100px;
+  opacity: 0.5;
+  position: relative;
+}
+
+.checkbox:checked + .checkboxStyle {
+  border-color: var(--green);
+  opacity: 1;
+  background-color: var(--green);
+}
+
+.checkbox:checked + .checkboxStyle::before {
+  font-weight: bolder;
+  position: absolute;
+  top: -6px;
+  left: -3px;
+  content: "✓";
+  -webkit-text-stroke: 1px var(--green);
+  -webkit-text-fill-color: var(--light);
 }

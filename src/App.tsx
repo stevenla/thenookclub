@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Critter } from "./types";
-import CritterRow from "./CritterRow";
+import CritterRow, { getStoreName } from "./CritterRow";
 import { MONTHS } from "./Calendar";
 import { useRadioGroup } from "./RadioGroup";
 import styles from "./App.module.css";
@@ -29,11 +29,13 @@ function isActiveInMonths(critter: Critter, months: number[]): boolean {
 const MONTH_FILTERS = ["Any", "Current", "Expiring", "New"];
 const TYPE_FILTERS = ["Any", "Fish", "Bugs"];
 const HEMISPHERE_FILTERS = ["North", "South"];
+const CATCH_FILTERS = ["Any", "Caught", "Uncaught"];
 const SORT_OPTIONS = ["Name", "Price"];
 
 export default function Index() {
   const [monthFilter, monthFilterEl] = useRadioGroup("month", MONTH_FILTERS);
   const [typeFilter, typeFilterEl] = useRadioGroup("type", TYPE_FILTERS);
+  const [catchFilter, catchFilterEl] = useRadioGroup("catch", CATCH_FILTERS);
   const [hemisphere, hemisphereEl] = useRadioGroup("hemi", HEMISPHERE_FILTERS);
   const [sort, sortEl] = useRadioGroup("sort", SORT_OPTIONS);
 
@@ -83,6 +85,17 @@ export default function Index() {
         return false;
       }
 
+      if (catchFilter !== "Any") {
+        const storeName = getStoreName(critter.name);
+        const storageValue = window.localStorage.getItem(storeName);
+        const parsedValue = storageValue && JSON.parse(storageValue);
+        if (catchFilter === "Caught" && parsedValue === false) {
+          return false;
+        } else if (catchFilter === "Uncaught" && parsedValue === true) {
+          return false;
+        }
+      }
+
       if (query !== "") {
         const regex = new RegExp(query, "gi");
         return !!critter.name.match(regex);
@@ -90,7 +103,7 @@ export default function Index() {
 
       return true;
     });
-  }, [monthFilter, typeFilter, query, sort, hemisphere]);
+  }, [monthFilter, typeFilter, query, sort, hemisphere, catchFilter]);
 
   return (
     <div className={styles.root}>
@@ -111,6 +124,10 @@ export default function Index() {
         <div className={styles.filterRow}>
           <span>Month</span>
           {monthFilterEl}
+        </div>
+        <div className={styles.filterRow}>
+          <span>Caught</span>
+          {catchFilterEl}
         </div>
         <div className={styles.filterRow}>
           <span>Hemi</span>

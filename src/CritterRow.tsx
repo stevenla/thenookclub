@@ -14,8 +14,13 @@ interface CritterRowProps {
   critter: Critter;
 }
 
+export function getStoreName(critterName: string): string {
+  const storeName = "checked--" + critterName;
+  return storeName;
+}
+
 export default function CritterRow({ critter }: CritterRowProps) {
-  const storeName = "checked--" + critter.name;
+  const storeName = getStoreName(critter.name);
   const [checked, setChecked] = useStoredState<boolean>(storeName, false);
   return (
     <label className={styles.root}>
@@ -24,7 +29,16 @@ export default function CritterRow({ critter }: CritterRowProps) {
       </div>
       <div className={styles.right}>
         <div className={styles.row}>
-          <div className={styles.name}>{critter.name}</div>
+          <div className={styles.name}>
+            {critter.name}
+            <input
+              type="checkbox"
+              className={styles.checkbox}
+              checked={checked}
+              onChange={() => setChecked(!checked)}
+            />
+            <div className={styles.checkboxStyle}></div>
+          </div>
           <div className={styles.price}>
             <span className={styles.priceNumber}>
               {critter.price.toLocaleString()}
@@ -42,13 +56,6 @@ export default function CritterRow({ critter }: CritterRowProps) {
         <div className={styles.row}>
           <Calendar critter={critter} />
         </div>
-      </div>
-      <div className={styles.checkbox}>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={() => setChecked(!checked)}
-        />
       </div>
     </label>
   );

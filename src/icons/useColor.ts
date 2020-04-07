@@ -11,9 +11,9 @@ export default function useColor(color: string): string {
     function listener() {
       setCounter((s) => s + 1);
     }
-    mql.addEventListener("change", listener);
+    mql.addListener(listener);
     return () => {
-      mql.removeEventListener("change", listener);
+      mql.removeListener(listener);
     };
   });
 
