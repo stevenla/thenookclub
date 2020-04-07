@@ -45,7 +45,7 @@ function useStickyish(
     return () => {
       window.removeEventListener("scroll", listener);
     };
-  }, [top, position]);
+  }, [top, position, ref]);
   return [position === "fixed" ? 0 : top, position];
 }
 
