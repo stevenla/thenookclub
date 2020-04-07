@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function useStoredState(
+export function useRawStoredState(
   key: string,
   initialState: string
 ): [string, (value: string) => void] {
@@ -17,4 +17,27 @@ export default function useStoredState(
     }
   }, [key, state]);
   return [state, setState];
+}
+
+type Primitive = boolean | number | string;
+type SerializableValue = Primitive | Primitive[] | { [key: string]: Primitive };
+
+export default function useStoredState<T extends SerializableValue>(
+  name: string,
+  initialState: T
+): [T, (value: T) => void] {
+  const [state, setState] = useRawStoredState(
+    name,
+    JSON.stringify(initialState)
+  );
+  function setter(newValue: T) {
+    setState(JSON.stringify(newValue));
+  }
+  let value: T;
+  try {
+    value = JSON.parse(state);
+  } catch (_) {
+    value = initialState;
+  }
+  return [value, setter];
 }

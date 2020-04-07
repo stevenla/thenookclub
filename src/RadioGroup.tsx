@@ -9,7 +9,7 @@ export function useRadioGroup(
   options: string[]
 ): [string, JSX.Element] {
   const [id] = useState(() => counter++);
-  const [value, setValue] = useStoredState(name, options[0]);
+  const [value, setValue] = useStoredState<string>(name, options[0]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: any = e.target.value;

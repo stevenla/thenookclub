@@ -3,6 +3,7 @@ import { Critter } from "./types";
 import Calendar from "./Calendar";
 import styles from "./CritterRow.module.css";
 import BellsIcon from "./icons/BellsIcon";
+import useStoredState from "./useStoredState";
 
 function getImageUrl(name: string): string {
   const formattedName = name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
@@ -14,8 +15,10 @@ interface CritterRowProps {
 }
 
 export default function CritterRow({ critter }: CritterRowProps) {
+  const storeName = "checked--" + critter.name;
+  const [checked, setChecked] = useStoredState<boolean>(storeName, false);
   return (
-    <div className={styles.root}>
+    <label className={styles.root}>
       <div className={styles.left}>
         <img src={getImageUrl(critter.name)} alt={critter.name} />
       </div>
@@ -40,6 +43,13 @@ export default function CritterRow({ critter }: CritterRowProps) {
           <Calendar critter={critter} />
         </div>
       </div>
-    </div>
+      <div className={styles.checkbox}>
+        <input
+          type="checkbox"
+          checked={checked}
+          onChange={() => setChecked(!checked)}
+        />
+      </div>
+    </label>
   );
 }
