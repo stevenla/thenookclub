@@ -18,3 +18,18 @@ export interface Critter {
   nov: boolean;
   dec: boolean;
 }
+
+export interface Fossil {
+  name: string;
+  price: number;
+}
+
+export interface FossilGroup {
+  name: string;
+  parts: Fossil[];
+}
+
+export interface FossilJSON {
+  standalone: Fossil[];
+  multipart: FossilGroup[];
+}

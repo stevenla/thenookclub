@@ -1,0 +1,87 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.fossils {
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.fossil {
+  margin: 16px 12px;
+}
+
+.filters {
+  margin-top: 12px;
+}
+
+.fossilGroup {
+  margin: 0 0 64px;
+}
+
+.fossilGroupName {
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.fossilList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.filterRow > span {
+  margin-right: 14px;
+  width: 52px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.6em;
+  text-align: right;
+}
+
+.filterRow > input {
+  border: 2px solid var(--foreground);
+  color: var(--foreground);
+  flex-grow: 1;
+  padding: 8px;
+  margin-right: 16px;
+  border-radius: 100px;
+  font-size: 16px;
+  -webkit-appearance: none;
+  background-color: transparent;
+}
+
+.filterRow > input::placeholder {
+  color: var(--foreground);
+  opacity: 0.5;
+}
+
+.filterRow > input:focus {
+  outline: 0;
+}
+
+@media (min-width: 500px) {
+  .filters {
+    width: 430px;
+    margin: 12px auto 24px;
+  }
+
+  .fossils {
+    margin: 16px auto;
+    max-width: 600px;
+  }
+}

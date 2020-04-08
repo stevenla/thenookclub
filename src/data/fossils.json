@@ -1,0 +1,403 @@
+{
+  "standalone": [
+    {
+      "name": "Acanthostega",
+      "price": 2000
+    },
+    {
+      "name": "Amber",
+      "price": 1200
+    },
+    {
+      "name": "Ammonite",
+      "price": 1100
+    },
+    {
+      "name": "Anomalocaris",
+      "price": 2000
+    },
+    {
+      "name": "Archaeopteryx",
+      "price": 1300
+    },
+    {
+      "name": "Australopith",
+      "price": 1100
+    },
+    {
+      "name": "Coprolite",
+      "price": 1100
+    },
+    {
+      "name": "Dinosaur track",
+      "price": 1000
+    },
+    {
+      "name": "Dunkleosteus",
+      "price": 3500
+    },
+    {
+      "name": "Eusthenopteron",
+      "price": 2000
+    },
+    {
+      "name": "Juramaia",
+      "price": 1000
+    },
+    {
+      "name": "Myllokunmingia",
+      "price": 1500
+    },
+    {
+      "name": "Shark-tooth pattern",
+      "price": 1000
+    },
+    {
+      "name": "Trilobite",
+      "price": 1300
+    }
+  ],
+  "multipart": [
+    {
+      "name": "Ankylosaurus",
+      "parts": [
+        {
+          "name": "Ankylo skull",
+          "price": 5000
+        },
+        {
+          "name": "Ankylo torso",
+          "price": 3000
+        },
+        {
+          "name": "Ankylo tail",
+          "price": 2500
+        }
+      ]
+    },
+    {
+      "name": "Archelon",
+      "parts": [
+        {
+          "name": "Archelon skull",
+          "price": 4000
+        },
+        {
+          "name": "Archelon tail",
+          "price": 3500
+        }
+      ]
+    },
+    {
+      "name": "Brachiosaurus",
+      "parts": [
+        {
+          "name": "Brachio skull",
+          "price": 6000
+        },
+        {
+          "name": "Brachio chest",
+          "price": 5500
+        },
+        {
+          "name": "Brachio pelvis",
+          "price": 5000
+        },
+        {
+          "name": "Brachio tail",
+          "price": 5500
+        }
+      ]
+    },
+    {
+      "name": "Deinonychus",
+      "parts": [
+        {
+          "name": "Deinony torso",
+          "price": 3000
+        },
+        {
+          "name": "Deinony tail",
+          "price": 2500
+        }
+      ]
+    },
+    {
+      "name": "Dimetrodon",
+      "parts": [
+        {
+          "name": "Dimetrodon skull",
+          "price": 5500
+        },
+        {
+          "name": "Dimetrodon torso",
+          "price": 5000
+        }
+      ]
+    },
+    {
+      "name": "Diplodocus",
+      "parts": [
+        {
+          "name": "Diplo skull",
+          "price": 5000
+        },
+        {
+          "name": "Diplo neck",
+          "price": 4500
+        },
+        {
+          "name": "Diplo chest",
+          "price": 4000
+        },
+        {
+          "name": "Diplo pelvis",
+          "price": 4500
+        },
+        {
+          "name": "Diplo tail",
+          "price": 5000
+        },
+        {
+          "name": "Diplo tail tip",
+          "price": 4000
+        }
+      ]
+    },
+    {
+      "name": "Iguanodon",
+      "parts": [
+        {
+          "name": "Iguanodon skull",
+          "price": 4000
+        },
+        {
+          "name": "Iguanodon torso",
+          "price": 3500
+        },
+        {
+          "name": "Iguanodon tail",
+          "price": 3000
+        }
+      ]
+    },
+    {
+      "name": "Mammoth",
+      "parts": [
+        {
+          "name": "Mammoth skull",
+          "price": 3000
+        },
+        {
+          "name": "Mammoth torso",
+          "price": 2500
+        }
+      ]
+    },
+    {
+      "name": "Megacerops",
+      "parts": [
+        {
+          "name": "Megacero skull",
+          "price": 4500
+        },
+        {
+          "name": "Megacero torso",
+          "price": 3500
+        },
+        {
+          "name": "Megacero tail",
+          "price": 3000
+        }
+      ]
+    },
+    {
+      "name": "Megaloceros",
+      "parts": [
+        {
+          "name": "Left megalo side",
+          "price": 4000
+        },
+        {
+          "name": "Right megalo side",
+          "price": 5500
+        }
+      ]
+    },
+    {
+      "name": "Ophthalmosaurus",
+      "parts": [
+        {
+          "name": "Ophthalmo skull",
+          "price": 2500
+        },
+        {
+          "name": "Ophthalmo torso",
+          "price": 2000
+        }
+      ]
+    },
+    {
+      "name": "Pachycephalosaurus",
+      "parts": [
+        {
+          "name": "Pachysaurus skull",
+          "price": 4000
+        },
+        {
+          "name": "Pachysaurus tail",
+          "price": 3500
+        }
+      ]
+    },
+    {
+      "name": "Parasaur",
+      "parts": [
+        {
+          "name": "Parasaur skull",
+          "price": 3500
+        },
+        {
+          "name": "Parasaur torso",
+          "price": 3000
+        },
+        {
+          "name": "Parasaur tail",
+          "price": 2500
+        }
+      ]
+    },
+    {
+      "name": "Plesiosaur",
+      "parts": [
+        {
+          "name": "Plesio skull",
+          "price": 4000
+        },
+        {
+          "name": "Plesio tail",
+          "price": 4500
+        },
+        {
+          "name": "Plesio body",
+          "price": 4500
+        }
+      ]
+    },
+    {
+      "name": "Pteranodon",
+      "parts": [
+        {
+          "name": "Right ptera wing",
+          "price": 4500
+        },
+        {
+          "name": "Ptera body",
+          "price": 4000
+        },
+        {
+          "name": "Left ptera wing",
+          "price": 4500
+        }
+      ]
+    },
+    {
+      "name": "Quetzalcoatlus",
+      "parts": [
+        {
+          "name": "Right quetzal wing",
+          "price": 5000
+        },
+        {
+          "name": "Quetzal torso",
+          "price": 4500
+        },
+        {
+          "name": "Left quetzal wing",
+          "price": 5000
+        }
+      ]
+    },
+    {
+      "name": "Sabertooth tiger",
+      "parts": [
+        {
+          "name": "Sabertooth skull",
+          "price": 2500
+        },
+        {
+          "name": "Sabertooth tail",
+          "price": 2000
+        }
+      ]
+    },
+    {
+      "name": "Spinosaurus",
+      "parts": [
+        {
+          "name": "Spino skull",
+          "price": 4000
+        },
+        {
+          "name": "Spino torso",
+          "price": 5000
+        },
+        {
+          "name": "Spino tail",
+          "price": 4000
+        }
+      ]
+    },
+    {
+      "name": "Stegosaur",
+      "parts": [
+        {
+          "name": "Stego skull",
+          "price": 5000
+        },
+        {
+          "name": "Stego torso",
+          "price": 4500
+        },
+        {
+          "name": "Stego tail",
+          "price": 4000
+        }
+      ]
+    },
+    {
+      "name": "Triceratops",
+      "parts": [
+        {
+          "name": "Tricera skull",
+          "price": 5500
+        },
+        {
+          "name": "Tricera torso",
+          "price": 5000
+        },
+        {
+          "name": "Tricera tail",
+          "price": 4500
+        }
+      ]
+    },
+    {
+      "name": "Tyrannosaurus rex",
+      "parts": [
+        {
+          "name": "T. rex skull",
+          "price": 6000
+        },
+        {
+          "name": "T. rex torso",
+          "price": 5500
+        },
+        {
+          "name": "T. rex tail",
+          "price": 5000
+        }
+      ]
+    }
+  ]
+}

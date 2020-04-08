@@ -3,12 +3,12 @@ import { Critter } from "./types";
 import Calendar from "./Calendar";
 import styles from "./CritterRow.module.css";
 import BellsIcon from "./icons/BellsIcon";
-import CheckIcon from "./icons/CheckIcon";
+import Checkbox from "./Checkbox";
 import useStoredState from "./useStoredState";
 
 function getImageUrl(name: string): string {
   const formattedName = name.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
-  return `/images/${formattedName}.png`;
+  return `/images/critters/${formattedName}.png`;
 }
 
 interface CritterRowProps {
@@ -33,19 +33,7 @@ export default function CritterRow({ critter }: CritterRowProps) {
         <div className={styles.row}>
           <div className={styles.name}>
             {critter.name}
-            <input
-              type="checkbox"
-              className={styles.checkbox}
-              checked={checked}
-              onChange={() => setChecked(!checked)}
-            />
-            <div className={styles.checkboxStyle}>
-              {checked && (
-                <div className={styles.checkboxIcon}>
-                  <CheckIcon color="--background" size={12} />
-                </div>
-              )}
-            </div>
+            <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
           </div>
           <div className={styles.price}>
             <span className={styles.priceNumber}>

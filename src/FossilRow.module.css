@@ -1,0 +1,55 @@
+.root {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+  justify-content: center;
+  position: relative;
+  width: 140px;
+  text-align: center;
+}
+
+.root:active::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  background-color: var(--foreground);
+  opacity: 0.08;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: -100;
+}
+
+.checkbox {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.image {
+  width: 128px;
+  height: 128px;
+}
+
+.image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.price {
+  flex-grow: 0;
+  color: var(--money);
+  display: flex;
+  align-items: center;
+}
+
+.priceNumber {
+  margin-right: 4px;
+}
+
+@media (min-width: 500px) {
+}
