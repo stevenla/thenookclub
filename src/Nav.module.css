@@ -13,7 +13,7 @@
 }
 
 .navSpacer {
-  height: 60px;
+  flex: 0 0 60px;
 }
 
 .link.linkActive {

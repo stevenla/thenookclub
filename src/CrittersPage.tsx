@@ -5,6 +5,8 @@ import { MONTHS } from "./Calendar";
 import { useRadioGroup } from "./RadioGroup";
 import styles from "./CrittersPage.module.css";
 import { HemisphereContextProvider } from "./HemisphereContext";
+import NullState from "./NullState";
+import CrittersIcon from "./icons/CrittersIcon";
 
 import fishes from "./data/fish.json";
 import bugs from "./data/bug.json";
@@ -149,6 +151,9 @@ export default function Index() {
           })}
         </div>
       </HemisphereContextProvider>
+      {filteredCritters.length === 0 && (
+        <NullState icon={<CrittersIcon size={64} />} text="No critters found" />
+      )}
     </div>
   );
 }

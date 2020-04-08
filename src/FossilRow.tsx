@@ -1,6 +1,5 @@
 import React from "react";
 import { Fossil } from "./types";
-import Calendar from "./Calendar";
 import styles from "./FossilRow.module.css";
 import BellsIcon from "./icons/BellsIcon";
 import Checkbox from "./Checkbox";

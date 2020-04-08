@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Critter, Fossil, FossilGroup, FossilJSON } from "./types";
+import { FossilGroup } from "./types";
 import FossilRow, { getStoreName } from "./FossilRow";
-import { MONTHS } from "./Calendar";
 import { useRadioGroup } from "./RadioGroup";
 import styles from "./FossilsPage.module.css";
-import { HemisphereContextProvider } from "./HemisphereContext";
+import NullState from "./NullState";
+import FossilIcon from "./icons/FossilIcon";
 
 import fossils from "./data/fossils.json";
 
@@ -107,6 +107,9 @@ export default function Index() {
           );
         })}
       </div>
+      {filteredFossilGroups.length === 0 && (
+        <NullState icon={<FossilIcon size={64} />} text="No fossils found" />
+      )}
     </div>
   );
 }

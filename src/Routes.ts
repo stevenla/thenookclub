@@ -26,6 +26,14 @@ const ROUTES: RouteConfig[] = [
       icon: require("./icons/FossilIcon"),
     },
   },
+  {
+    path: "/villagers",
+    page: require("./VillagersPage"),
+    nav: {
+      name: "Villagers",
+      icon: require("./icons/VillagersIcon"),
+    },
+  },
 ];
 
 export default ROUTES;

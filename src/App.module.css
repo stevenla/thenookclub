@@ -1,7 +1,9 @@
 .root {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
+
 .nav {
   top: 0;
   left: 0;

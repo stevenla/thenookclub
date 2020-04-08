@@ -15,7 +15,7 @@ export const MONTHS = [
   "sep",
   "oct",
   "nov",
-  "dec"
+  "dec",
 ];
 
 function capitalize(month: string): string {
