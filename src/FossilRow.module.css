@@ -23,8 +23,9 @@
 }
 
 .checkbox {
+  left: 50%;
+  margin-left: 32px;
   position: absolute;
-  right: 24px;
   top: 0;
 }
 
@@ -43,6 +44,7 @@
 }
 
 .price {
+  margin-top: 2px;
   flex-grow: 0;
   color: var(--money);
   display: flex;
