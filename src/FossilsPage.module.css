@@ -4,14 +4,16 @@
 }
 
 .fossils {
-  margin: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 16px;
+  max-width: 512px;
 }
 
 .fossil {
-  margin: 16px 12px;
+  margin: 16px 0;
+  flex: 1 1 144px;
 }
 
 .filters {
@@ -19,7 +21,7 @@
 }
 
 .fossilGroup {
-  margin: 0 0 64px;
+  margin: 0 0 48px;
 }
 
 .fossilGroupName {
@@ -82,6 +84,5 @@
 
   .fossils {
     margin: 16px auto;
-    max-width: 600px;
   }
 }

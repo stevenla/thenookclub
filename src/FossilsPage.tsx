@@ -16,33 +16,61 @@ const FOSSIL_GROUPS: FossilGroup[] = [
   ...fossils.multipart,
 ];
 
+const FOUND_FILTERS = ["Any", "Found", "Not Found"];
+
 export default function Index() {
   const [query, setQuery] = useState<string>("");
+  const [foundFilter, foundFilterEl] = useRadioGroup("catch", FOUND_FILTERS);
 
-  const filteredFossilGroups = React.useMemo(() => {
-    return FOSSIL_GROUPS.map(
-      (group: FossilGroup): FossilGroup => {
+  const filteredFossilGroups = React.useMemo((): FossilGroup[] => {
+    let ret = FOSSIL_GROUPS;
+
+    if (query != "") {
+      ret = ret.map((group) => {
         if (query !== "") {
           const regex = new RegExp(query, "gi");
           const groupNameMatches = group.name.match(regex);
           if (groupNameMatches) {
             return group;
           }
-          const newGroup = {
-            name: group.name,
-            parts: group.parts.filter((fossil: Fossil) => {
+          return {
+            ...group,
+            parts: group.parts.filter((fossil) => {
               return !!fossil.name.match(regex);
             }),
           };
-          if (newGroup.parts.length === 0) {
-            return null;
-          }
-          return newGroup;
         }
         return group;
+      });
+    }
+
+    if (foundFilter !== "Any") {
+      ret = ret.map((group) => {
+        return {
+          ...group,
+          parts: group.parts.filter((fossil) => {
+            const storeName = getStoreName(fossil.name);
+            const storageValue = window.localStorage.getItem(storeName);
+            if (foundFilter === "Found") {
+              return JSON.parse(storageValue);
+            } else {
+              return !JSON.parse(storageValue);
+            }
+          }),
+        };
+      });
+    }
+
+    return ret.filter((group) => {
+      if (!group) {
+        return false;
       }
-    ).filter((x) => x);
-  }, [query]);
+      if (group.parts.length === 0) {
+        return false;
+      }
+      return true;
+    });
+  }, [query, foundFilter]);
 
   return (
     <div className={styles.root}>
@@ -55,6 +83,10 @@ export default function Index() {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="search..."
           />
+        </div>
+        <div className={styles.filterRow}>
+          <span>Found</span>
+          {foundFilterEl}
         </div>
       </div>
       <div className={styles.fossils}>

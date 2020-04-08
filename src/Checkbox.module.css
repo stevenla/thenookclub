@@ -7,7 +7,6 @@
   display: inline-flex;
   width: 12px;
   height: 12px;
-  margin-left: 4px;
   border: 1px solid var(--foreground);
   background: none;
   border-radius: 100px;

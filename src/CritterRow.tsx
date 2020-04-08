@@ -33,7 +33,12 @@ export default function CritterRow({ critter }: CritterRowProps) {
         <div className={styles.row}>
           <div className={styles.name}>
             {critter.name}
-            <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
+            <div className={styles.checkbox}>
+              <Checkbox
+                checked={checked}
+                onChange={() => setChecked(!checked)}
+              />
+            </div>
           </div>
           <div className={styles.price}>
             <span className={styles.priceNumber}>
