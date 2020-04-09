@@ -2,17 +2,28 @@ import { useState, useEffect } from "react";
 import isEqual from "lodash/isEqual";
 
 class LocalStorageListener {
-  target: EventTarget = new EventTarget();
+  target: EventTarget | null = null;
+  constructor() {
+    try {
+      this.target = new EventTarget();
+    } catch (e) {}
+  }
   triggerChange(key: string): void {
-    this.target.dispatchEvent(new Event(`change--${key}`));
+    if (this.target) {
+      this.target.dispatchEvent(new Event(`change--${key}`));
+    }
   }
 
   addListener(key: string, listener: EventListener): void {
-    this.target.addEventListener(`change--${key}`, listener);
+    if (this.target) {
+      this.target.addEventListener(`change--${key}`, listener);
+    }
   }
 
   removeListener(key: string, listener: EventListener): void {
-    this.target.removeEventListener(`change--${key}`, listener);
+    if (this.target) {
+      this.target.removeEventListener(`change--${key}`, listener);
+    }
   }
 }
 
