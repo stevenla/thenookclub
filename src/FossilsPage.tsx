@@ -17,6 +17,14 @@ const FOSSIL_GROUPS: FossilGroup[] = [
   ...fossils.multipart,
 ];
 
+const ACTUAL_GROUP_COUNTS: { [key: string]: number } = FOSSIL_GROUPS.reduce(
+  (acc, group) => {
+    acc[group.name] = group.parts.length;
+    return acc;
+  },
+  {}
+);
+
 const FOUND_FILTERS = ["Any", "Found", "Not Found"];
 
 interface GroupingProps {
@@ -37,7 +45,7 @@ function Grouping({ fossilGroup }: GroupingProps) {
       <div className={styles.fossilGroupName}>
         {fossilGroup.name}
         <span className={styles.fossilGroupCount}>
-          ({numFound} / {values.length})
+          ({numFound} / {ACTUAL_GROUP_COUNTS[fossilGroup.name]})
         </span>
       </div>
       <div className={styles.fossilList}>
