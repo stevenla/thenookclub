@@ -1,28 +1,26 @@
 import { useState, useEffect } from "react";
 import isEqual from "lodash/isEqual";
 
+type Listener = () => any;
+
 class LocalStorageListener {
-  target: EventTarget | null = null;
-  constructor() {
-    try {
-      this.target = new EventTarget();
-    } catch (e) {}
-  }
+  listeners: { [key: string]: Set<Listener> } = {};
+
   triggerChange(key: string): void {
-    if (this.target) {
-      this.target.dispatchEvent(new Event(`change--${key}`));
-    }
+    const listeners = this.listeners[key] ?? new Set();
+    listeners.forEach((listener) => listener());
   }
 
-  addListener(key: string, listener: EventListener): void {
-    if (this.target) {
-      this.target.addEventListener(`change--${key}`, listener);
+  addListener(key: string, listener: Listener): void {
+    if (!this.listeners.hasOwnProperty(key)) {
+      this.listeners[key] = new Set();
     }
+    this.listeners[key].add(listener);
   }
 
-  removeListener(key: string, listener: EventListener): void {
-    if (this.target) {
-      this.target.removeEventListener(`change--${key}`, listener);
+  removeListener(key: string, listener: Listener): void {
+    if (this.listeners.hasOwnProperty(key)) {
+      this.listeners[key].delete(listener);
     }
   }
 }
