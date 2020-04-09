@@ -5,6 +5,7 @@ import { useRadioGroup } from "./RadioGroup";
 import styles from "./FossilsPage.module.css";
 import NullState from "./NullState";
 import FossilIcon from "./icons/FossilIcon";
+import { useStoredValues } from "./useStoredState";
 
 import fossils from "./data/fossils.json";
 
@@ -17,6 +18,40 @@ const FOSSIL_GROUPS: FossilGroup[] = [
 ];
 
 const FOUND_FILTERS = ["Any", "Found", "Not Found"];
+
+interface GroupingProps {
+  fossilGroup: FossilGroup;
+}
+
+function Grouping({ fossilGroup }: GroupingProps) {
+  const values = useStoredValues<boolean>(
+    fossilGroup.parts.map((part) => getStoreName(part.name))
+  );
+  const numFound = values.reduce(
+    (acc: number, value: boolean): number => acc + (value ? 1 : 0),
+    0
+  );
+
+  return (
+    <div className={styles.fossilGroup}>
+      <div className={styles.fossilGroupName}>
+        {fossilGroup.name}
+        <span className={styles.fossilGroupCount}>
+          ({numFound} / {values.length})
+        </span>
+      </div>
+      <div className={styles.fossilList}>
+        {fossilGroup.parts.map((fossil) => {
+          return (
+            <div key={fossil.name} className={styles.fossil}>
+              <FossilRow fossil={fossil} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default function Index() {
   const [query, setQuery] = useState<string>("");
@@ -91,20 +126,7 @@ export default function Index() {
       </div>
       <div className={styles.fossils}>
         {filteredFossilGroups.map((fossilGroup) => {
-          return (
-            <div key={fossilGroup.name} className={styles.fossilGroup}>
-              <div className={styles.fossilGroupName}>{fossilGroup.name}</div>
-              <div className={styles.fossilList}>
-                {fossilGroup.parts.map((fossil) => {
-                  return (
-                    <div key={fossil.name} className={styles.fossil}>
-                      <FossilRow fossil={fossil} />
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
+          return <Grouping fossilGroup={fossilGroup} key={fossilGroup.name} />;
         })}
       </div>
       {filteredFossilGroups.length === 0 && (

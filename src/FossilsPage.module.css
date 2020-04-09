@@ -32,6 +32,14 @@
   letter-spacing: 1px;
 }
 
+.fossilGroupCount {
+  font-weight: 800;
+  opacity: 0.5;
+  margin-left: 4px;
+  font-size: 0.75em;
+  letter-spacing: 0px;
+}
+
 .fossilList {
   display: flex;
   flex-direction: row;

@@ -1,4 +1,22 @@
 import { useState, useEffect } from "react";
+import isEqual from "lodash/isEqual";
+
+class LocalStorageListener {
+  target: EventTarget = new EventTarget();
+  triggerChange(key: string): void {
+    this.target.dispatchEvent(new Event(`change--${key}`));
+  }
+
+  addListener(key: string, listener: EventListener): void {
+    this.target.addEventListener(`change--${key}`, listener);
+  }
+
+  removeListener(key: string, listener: EventListener): void {
+    this.target.removeEventListener(`change--${key}`, listener);
+  }
+}
+
+const storageListener = new LocalStorageListener();
 
 export function useRawStoredState(
   key: string,
@@ -14,8 +32,25 @@ export function useRawStoredState(
   useEffect(() => {
     if (window.localStorage) {
       window.localStorage.setItem(key, state);
+      storageListener.triggerChange(key);
     }
   }, [key, state]);
+
+  useEffect(() => {
+    function listener() {
+      if (window.localStorage) {
+        const value = window.localStorage.getItem(key);
+        if (value !== state) {
+          setState(value);
+        }
+      }
+    }
+    storageListener.addListener(key, listener);
+    return () => {
+      storageListener.removeListener(key, listener);
+    };
+  }, [key, state]);
+
   return [state, setState];
 }
 
@@ -40,4 +75,37 @@ export default function useStoredState<T extends SerializableValue>(
     value = initialState;
   }
   return [value, setter];
+}
+
+export function useStoredValues<T extends SerializableValue>(
+  keys: string[]
+): T[] {
+  function getValues(): T[] {
+    if (window.localStorage) {
+      return keys.map((key) => JSON.parse(window.localStorage.getItem(key)));
+    }
+    return [];
+  }
+  const [values, setValues] = useState<T[]>(getValues);
+
+  useEffect(() => {
+    function listener() {
+      if (window.localStorage) {
+        const newValues = getValues();
+        if (!isEqual(values, newValues)) {
+          setValues(newValues);
+        }
+      }
+    }
+    for (const key of keys) {
+      storageListener.addListener(key, listener);
+    }
+    return () => {
+      for (const key of keys) {
+        storageListener.removeListener(key, listener);
+      }
+    };
+  }, [keys, values]);
+
+  return values;
 }
