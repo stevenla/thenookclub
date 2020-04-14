@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FossilGroup } from "./types";
+import { FossilGroup, Fossil } from "./types";
 import FossilRow, { getStoreName } from "./FossilRow";
 import { useRadioGroup } from "./RadioGroup";
 import styles from "./FossilsPage.module.css";
@@ -17,9 +17,9 @@ const FOSSIL_GROUPS: FossilGroup[] = [
   ...fossils.multipart,
 ];
 
-const ACTUAL_GROUP_COUNTS: { [key: string]: number } = FOSSIL_GROUPS.reduce(
+const FOSSILS_BY_GROUP_NAME: { [key: string]: Fossil[] } = FOSSIL_GROUPS.reduce(
   (acc, group) => {
-    acc[group.name] = group.parts.length;
+    acc[group.name] = [...group.parts];
     return acc;
   },
   {}
@@ -33,7 +33,9 @@ interface GroupingProps {
 
 function Grouping({ fossilGroup }: GroupingProps) {
   const values = useStoredValues<boolean>(
-    fossilGroup.parts.map((part) => getStoreName(part.name))
+    FOSSILS_BY_GROUP_NAME[fossilGroup.name].map((fossil) =>
+      getStoreName(fossil.name)
+    )
   );
   const numFound = values.reduce(
     (acc: number, value: boolean): number => acc + (value ? 1 : 0),
@@ -45,7 +47,7 @@ function Grouping({ fossilGroup }: GroupingProps) {
       <div className={styles.fossilGroupName}>
         {fossilGroup.name}
         <span className={styles.fossilGroupCount}>
-          ({numFound} / {ACTUAL_GROUP_COUNTS[fossilGroup.name]})
+          ({numFound} / {FOSSILS_BY_GROUP_NAME[fossilGroup.name].length})
         </span>
       </div>
       <div className={styles.fossilList}>
