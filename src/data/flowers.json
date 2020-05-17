@@ -1,0 +1,247 @@
+[
+  {
+    "name": "Cosmos",
+    "flowers": [
+      {
+        "type": "cosmos",
+        "color": "red"
+      }, 
+      {
+        "type": "cosmos",
+        "color": "yellow"
+      },
+      {
+        "type": "cosmos",
+        "color": "white"
+      },
+      {
+        "type": "cosmos",
+        "color": "orange"
+      },
+      {
+        "type": "cosmos",
+        "color": "pink"
+      },
+      {
+        "type": "cosmos",
+        "color": "black"
+      }
+    ]
+  },
+  {
+    "name": "Hyacinths",
+    "flowers": [
+      {
+        "type": "hyacinth",
+        "color": "red"
+      },
+      {
+        "type": "hyacinth",
+        "color": "yellow"
+      },
+      {
+        "type": "hyacinth",
+        "color": "white"
+      },
+      {
+        "type": "hyacinth",
+        "color": "pink"
+      },
+      {
+        "type": "hyacinth",
+        "color": "blue"
+      },
+      {
+        "type": "hyacinth",
+        "color": "orange"
+      },
+      {
+        "type": "hyacinth",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "name": "Lilies",
+    "flowers": [
+      {
+        "type": "lily",
+        "color": "red"
+      },
+      {
+        "type": "lily",
+        "color": "yellow"
+      },
+      {
+        "type": "lily",
+        "color": "white"
+      },
+      {
+        "type": "lily",
+        "color": "black"
+      },
+      {
+        "type": "lily",
+        "color": "orange"
+      }
+    ]
+  },
+  {
+    "name": "Mums",
+    "flowers": [
+      {
+        "type": "mum",
+        "color": "red"
+      },
+      {
+        "type": "mum",
+        "color": "yellow"
+      },
+      {
+        "type": "mum",
+        "color": "white"
+      },
+      {
+        "type": "mum",
+        "color": "pink"
+      },
+      {
+        "type": "mum",
+        "color": "purple"
+      },
+      {
+        "type": "mum",
+        "color": "green"
+      }
+    ]
+  },
+  {
+    "name": "Pansies",
+    "flowers": [
+      {
+        "type": "pansy",
+        "color": "red"
+      },
+      {
+       "type": "pansy",
+        "color": "yellow"
+      },
+      {
+        "type": "pansy",
+        "color": "white"
+      },
+      {
+        "type": "pansy",
+        "color": "blue"
+      },
+      {
+        "type": "pansy",
+        "color": "orange"
+      },
+      {
+        "type": "pansy",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "name": "Roses",
+    "flowers": [
+      {
+        "type": "rose",
+        "color": "red"
+      },
+      {
+        "type": "rose",
+        "color": "yellow"
+      },
+      {
+        "type": "rose",
+        "color": "white"
+      },
+      {
+        "type": "rose",
+        "color": "black"
+      },
+      {
+        "type": "rose",
+        "color": "pink"
+      },
+      {
+        "type": "rose",
+        "color": "orange"
+      },
+      {
+        "type": "rose",
+        "color": "purple"
+      },
+
+      {
+        "type": "rose",
+        "color": "blue"
+      },
+      {
+        "type": "rose",
+        "color": "gold"
+      }
+    ]
+  },
+  {
+    "name": "Tulips",
+    "flowers": [
+      {
+        "type": "tulip",
+        "color": "red"
+      },
+      {
+        "type": "tulip",
+        "color": "yellow"
+      },
+      {
+        "type": "tulip",
+        "color": "white"
+      },
+      {
+        "type": "tulip",
+        "color": "black"
+      },
+      {
+        "type": "tulip",
+        "color": "orange"
+      },
+      {
+        "type": "tulip",
+        "color": "pink"
+      },
+      {
+        "type": "tulip",
+        "color": "purple"
+      }
+    ]
+  },
+  {
+    "name": "Windflowers",
+    "flowers": [
+      {
+        "type": "windflower",
+        "color": "red"
+      },
+      {
+        "type": "windflower",
+        "color": "orange"
+      },
+      {
+        "type": "windflower",
+        "color": "pink"
+      },
+      {
+        "type": "windflower",
+        "color": "blue"
+      },
+      {
+        "type": "windflower",
+        "color": "purple"
+      }
+    ]
+  }
+]

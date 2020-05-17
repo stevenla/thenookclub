@@ -33,3 +33,14 @@ export interface FossilJSON {
   standalone: Fossil[];
   multipart: FossilGroup[];
 }
+
+export interface Flower {
+  type: string;
+  color: string;
+  hybrid_colors?: string[];
+}
+
+export interface FlowerGroup {
+  name: string,
+  flowers: Flower[];
+}
