@@ -16,7 +16,7 @@
 }
 
 .filters {
-  margin-top: 12px;
+  background-color: var(--critters);
 }
 
 .filterRow {
@@ -58,8 +58,8 @@
 
 @media (min-width: 500px) {
   .filters {
-    width: 430px;
-    margin: 12px auto 24px;
+    /* width: 430px; */
+    /* margin: 12px auto 24px; */
   }
 
   .critters {

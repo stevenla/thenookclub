@@ -7,6 +7,7 @@ import styles from "./CrittersPage.module.css";
 import { HemisphereContextProvider } from "./HemisphereContext";
 import NullState from "./NullState";
 import CrittersIcon from "./icons/CrittersIcon";
+import Curve from "./Curve";
 
 import fishes from "./data/fish.json";
 import bugs from "./data/bug.json";
@@ -140,6 +141,7 @@ export default function Index() {
           {sortEl}
         </div>
       </div>
+      <Curve />
       <HemisphereContextProvider value={hemisphere}>
         <div className={styles.critters}>
           {filteredCritters.map((critter) => {

@@ -6,6 +6,7 @@ import styles from "./FossilsPage.module.css";
 import NullState from "./NullState";
 import FossilIcon from "./icons/FossilIcon";
 import { useStoredValues } from "./useStoredState";
+import Curve from "./Curve";
 
 import fossils from "./data/fossils.json";
 
@@ -134,6 +135,7 @@ export default function Index() {
           {foundFilterEl}
         </div>
       </div>
+      <Curve />
       <div className={styles.fossils}>
         {filteredFossilGroups.map((fossilGroup) => {
           return <Grouping fossilGroup={fossilGroup} key={fossilGroup.name} />;

@@ -1,8 +1,11 @@
 :root {
-  --background: #fff;
-  --foreground: #000;
+  --background: #f7f5e9;
+  --foreground: #766957;
   --money: #58c322;
   --accent: #67e2ea;
+  --critters: #f6be53;
+  --villagers: #f6c099;
+  --fossils: #aabefa;
 }
 
 * {
